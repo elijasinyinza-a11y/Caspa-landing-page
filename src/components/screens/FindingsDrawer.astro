@@ -1,0 +1,51 @@
+---
+/**
+ * Integrity findings, as structural examples only.
+ * Hard blocks and advisory flags differ by label, icon shape and border style,
+ * not by colour alone (WCAG: no colour-only meaning).
+ */
+import { findings, org } from '../../data/sample-utility';
+interface Props { caption?: string }
+const { caption } = Astro.props;
+---
+<figure class="drawer">
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <span class="drawer__title">Integrity findings</span>
+      <span class="drawer__count">{org.year} budget round, {findings.length} findings</span>
+    </div>
+    <ul class="drawer__list">
+      {findings.map((f) => (
+        <li class:list={['finding', `finding--${f.severity}`]}>
+          {f.severity === 'block' ? (
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path d="M8 2h8l6 6v8l-6 6H8l-6-6V8z" fill="currentColor" /><path d="M8 12h8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" /></svg>
+          ) : (
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 22 20H2z" /><path d="M12 10v4.5M12 17.2v.3" /></svg>
+          )}
+          <div>
+            <div class="finding__kind">{f.severity === 'block' ? 'Hard block' : 'Advisory'}</div>
+            <div class="finding__title">{f.title}</div>
+            <div class="finding__detail">{f.detail}</div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+  {caption && <figcaption class="caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .drawer { margin: 0; }
+  .drawer__panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 12px 32px rgb(13 27 42 / 0.08); overflow: hidden; }
+  .drawer__head { padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+  .drawer__title { font-weight: 700; }
+  .drawer__count { font-size: 0.875rem; color: var(--muted); }
+  .drawer__list { list-style: none; margin: 0; padding: 1rem; display: grid; gap: 0.75rem; }
+  .finding { display: flex; gap: 0.75rem; align-items: flex-start; border-radius: 8px; padding: 0.875rem; }
+  .finding svg { flex: none; margin-top: 1px; }
+  .finding--block { background: var(--block-bg); border: 1.5px solid var(--block); color: var(--block); }
+  .finding--advisory { background: var(--advisory-bg); border: 1.5px dashed var(--advisory-border); color: var(--advisory-text); }
+  .finding__kind { font-size: var(--text-caption); font-weight: 700; }
+  .finding__title { margin-top: 2px; font-size: var(--text-small); font-weight: 600; color: var(--navy); }
+  .finding__detail { margin-top: 4px; font-size: 0.875rem; color: var(--ink-soft); }
+</style>

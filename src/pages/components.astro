@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { components, type ComponentKey } from '../data/site';
+import { frontmatter as home } from '../content/home.md';
+const keys = Object.keys(components) as ComponentKey[];
+---
+<BaseLayout title="Components" description="Strategy, Cascade, Plan and Performance: four components of CASPA™ on one shared data model.">
+  <PageIntro title="Four components, one product" lead={home.chain.lead} />
+  {keys.map((key, i) => (
+    <section id={key} class:list={['section', { 'section--white': i % 2 === 0 }]} aria-labelledby={`${key}-h`}>
+      <div class="container comp">
+        <div class="comp__text">
+          <div class="comp__bar" style={`background:${components[key].color}`}></div>
+          <h2 id={`${key}-h`}>{components[key].name}</h2>
+          <p class="lead">{home.chain.components[key].text}</p>
+          <p class="comp__used">{home.chain.components[key].usedBy}</p>
+          <Placeholder text={`[How ${components[key].name} links to the other components. Copy for Elijah's review]`} />
+        </div>
+        <div class="comp__visual">
+          <Placeholder as="div" text={`[Screenshot: ${components[key].name}, clean export from the prototype with fictional data]`} />
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .comp { display: flex; flex-wrap: wrap; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .comp__text { flex: 1 1 22rem; min-width: 0; max-width: 34rem; }
+  .comp__visual { flex: 1 1 24rem; min-width: 0; }
+  .comp__visual :global(.placeholder) { margin: 0; aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .comp__bar { width: 3rem; height: 5px; border-radius: 3px; margin-bottom: 1rem; }
+  .comp__used { margin-top: 0.75rem; font-size: var(--text-small); color: var(--muted); }
+</style>

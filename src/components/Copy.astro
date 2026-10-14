@@ -1,0 +1,8 @@
+---
+/** Renders a line of copy, or a Placeholder if it is in [square brackets]. */
+import Placeholder from './Placeholder.astro';
+interface Props { text: string; tone?: 'light' | 'dark'; class?: string }
+const { text, tone = 'light', class: className } = Astro.props;
+const isPlaceholder = /^\s*\[.*\]\s*$/s.test(text);
+---
+{isPlaceholder ? <Placeholder text={text} tone={tone} /> : <p class={className}>{text}</p>}

@@ -1,0 +1,38 @@
+---
+/** Executive view. Status uses label and shape in navy, never component colours. */
+import { goalHealth, org } from '../../data/sample-utility';
+const labels = { 'on-track': 'On track', 'at-risk': 'At risk', unfunded: 'No funded activity' } as const;
+---
+<div class="screen">
+  <div class="screen__title">Goal health, {org.year}</div>
+  <div class="screen__sub">Share of activities on schedule</div>
+  <ul class="goals">
+    {goalHealth.map((g) => (
+      <li>
+        <div class="goals__row">
+          <span class="goals__name">{g.code} {g.name}</span>
+          <span class="goals__status"><span class:list={['mark', `mark--${g.health}`]} aria-hidden="true"></span>{labels[g.health]}</span>
+        </div>
+        {g.onSchedule === null ? (
+          <div class="track track--empty"></div>
+        ) : (
+          <div class="track" role="img" aria-label={`${g.onSchedule}% of activities on schedule`}><div class="track__fill" style={`width:${g.onSchedule}%`}></div></div>
+        )}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .goals { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.875rem; }
+  .goals__row { display: flex; justify-content: space-between; gap: 0.75rem; font-size: 0.875rem; }
+  .goals__name { font-weight: 600; }
+  .goals__status { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  .mark { width: 10px; height: 10px; border-radius: 50%; }
+  .mark--on-track { background: var(--navy); }
+  .mark--at-risk { border: 2px solid var(--navy); }
+  .mark--unfunded { height: 2px; border-radius: 0; background: var(--navy); }
+  .track { margin-top: 6px; height: 8px; background: var(--track); border-radius: 4px; }
+  .track__fill { height: 8px; background: var(--navy); border-radius: 4px; }
+  .track--empty { background: none; border: 1px dashed #8a8578; }
+</style>

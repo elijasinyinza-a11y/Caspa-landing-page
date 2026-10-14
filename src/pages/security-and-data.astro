@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { frontmatter as home } from '../content/home.md';
+---
+<BaseLayout title="Security and data" description="Private workspaces, data ownership, role-based access and confidential ratings in CASPA™.">
+  <PageIntro title="Security and data" lead="Each organisation has its own private workspace and owns its data." />
+  <section class="section section--white">
+    <div class="container list">
+      {home.data.points.map((p: { title: string; text: string }) => (
+        <div class="item">
+          <h2 class="h3">{p.title}</h2>
+          <p>{p.text}</p>
+        </div>
+      ))}
+      <div class="item">
+        <h2 class="h3">Hosting and data protection</h2>
+        <Placeholder text="[Where data is hosted, backups, and compliance with the Data Protection Act of Zambia and other target markets: confirm with a qualified adviser]" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .list { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2.5rem; }
+  .h3 { font-size: 1.3125rem; }
+  .item p { margin-top: 0.5rem; color: var(--ink-soft); }
+</style>

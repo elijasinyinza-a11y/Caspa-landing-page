@@ -1,0 +1,53 @@
+---
+import { lineOfSight, org } from '../../data/sample-utility';
+import { components } from '../../data/site';
+interface Props { caption?: string }
+const { caption } = Astro.props;
+const last = lineOfSight.length - 1;
+---
+<figure class="los">
+  <div class="los__panel">
+    <div class="los__head">
+      <span class="los__title">Line of sight</span>
+      <span class="los__org">{org.name}</span>
+    </div>
+    <ol class="los__steps">
+      {lineOfSight.map((step, i) => (
+        <li class:list={['los__step', { 'los__step--you': i === last }]}>
+          <div class="los__bar" style={`background:${components[step.component].color}`}></div>
+          <div class="los__body">
+            <div class="los__label">
+              <span class="los__swatch" style={`background:${components[step.component].color}`} aria-hidden="true"></span>
+              <strong>{step.level}</strong>
+              <span>in {components[step.component].name}</span>
+            </div>
+            <div class="los__text">{step.text}</div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+  {caption && <figcaption class="caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .los { margin: 0; }
+  .los__panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .los__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.75rem; margin-bottom: 0.875rem; }
+  .los__title { font-size: 0.875rem; font-weight: 600; }
+  .los__org { font-size: var(--text-caption); color: var(--muted); }
+  .los__steps { list-style: none; margin: 0; padding: 0; }
+  .los__step { border: 1px solid var(--border); border-radius: 8px; }
+  .los__step + .los__step { margin-top: 12px; position: relative; }
+  .los__step + .los__step::before {
+    content: ''; position: absolute; top: -13px; left: 22px; width: 2px; height: 12px; background: var(--rule);
+  }
+  .los__step--you { border: 1.5px solid var(--navy); }
+  .los__bar { height: 4px; }
+  .los__body { padding: 0.625rem 0.875rem; }
+  .los__label { display: flex; align-items: center; gap: 7px; font-size: var(--text-caption); color: var(--muted); }
+  .los__label strong { color: var(--navy); font-weight: 600; }
+  .los__swatch { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .los__text { margin-top: 3px; font-size: var(--text-small); font-weight: 600; line-height: 1.35; }
+  .los__bar { border-radius: 7px 7px 0 0; }
+</style>

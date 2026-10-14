@@ -1,0 +1,33 @@
+---
+import { frontmatter as home } from '../../content/home.md';
+const { doors } = home;
+---
+<section class="section" aria-labelledby="doors-h">
+  <div class="container doors">
+    <h2 id="doors-h">{doors.heading}</h2>
+    <p class="lead doors__lead">{doors.lead}</p>
+    <div class="doors__pair">
+      <div class="door"><h3>{doors.bring.title}</h3><p>{doors.bring.text}</p></div>
+      <div class="door"><h3>{doors.form.title}</h3><p>{doors.form.text}</p></div>
+    </div>
+    <svg class="doors__join" aria-hidden="true" viewBox="0 0 100 40" preserveAspectRatio="none">
+      <path d="M25 0 C25 22, 50 16, 50 40 M75 0 C75 22, 50 16, 50 40" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div class="card doors__cascade">
+      <div class="card__bar" style="background: var(--cascade)"></div>
+      <div class="card__body"><h3>{doors.cascade.title}</h3><p>{doors.cascade.text}</p></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .doors { max-width: 60rem; text-align: center; }
+  .doors__lead { margin-inline: auto; max-width: 34em; }
+  .doors__pair { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 2.5rem; text-align: left; }
+  .door { flex: 1 1 16.25rem; background: var(--white); border: 1.5px solid var(--navy); border-radius: var(--radius-lg); padding: 1.5rem; }
+  .door h3 { font-size: 1.5rem; }
+  .door p, .doors__cascade p { margin-top: 0.625rem; font-size: 1rem; color: var(--ink-soft); }
+  .doors__join { display: block; width: 100%; height: 56px; color: var(--navy); }
+  .doors__cascade { max-width: 28.75rem; margin-inline: auto; }
+  .doors__cascade h3 { font-size: 1.375rem; }
+</style>

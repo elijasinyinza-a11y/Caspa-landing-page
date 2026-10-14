@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Placeholder from '../../components/Placeholder.astro';
+---
+<BaseLayout title="Request received" showPilotCta={false} noindex>
+  <PageIntro title="Thank you. Your request has been received." />
+  <section class="section section--white">
+    <div class="container">
+      <h2 class="h3">What happens next</h2>
+      <Placeholder text="[Who will contact you, and within how many working days: OPEN]" />
+      <div class="links">
+        <a href="/how-it-works" class="text-link">See how it works</a>
+        <a href="/" class="text-link">Back to the homepage</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .h3 { font-size: 1.3125rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.5rem; }
+</style>

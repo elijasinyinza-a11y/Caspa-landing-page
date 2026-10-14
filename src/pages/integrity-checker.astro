@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import FindingsDrawer from '../components/screens/FindingsDrawer.astro';
+import { frontmatter as home } from '../content/home.md';
+---
+<BaseLayout title="Integrity checker" description="How CASPA™ flags breaks in the chain from goal to individual action.">
+  <PageIntro title="The integrity checker" lead={home.integrity.heading} />
+  <section class="section section--white">
+    <div class="container split">
+      <div class="split__text">
+        <h2>What it checks</h2>
+        {home.integrity.paragraphs.map((p: string) => <p class="split__p">{p}</p>)}
+        <Placeholder text="[Rule catalogue: structural examples only until the catalogue is confirmed]" />
+      </div>
+      <div class="split__visual"><FindingsDrawer caption={home.integrity.caption} /></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container cols">
+      <div>
+        <h2 class="h3">Hard blocks and advisory flags</h2>
+        <Placeholder text="[Which checks are hard blocks and which are advisory: to be confirmed]" />
+      </div>
+      <div>
+        <h2 class="h3">Who sees findings</h2>
+        <Placeholder text="[Who sees which findings, by role: to be confirmed]" />
+      </div>
+      <div>
+        <h2 class="h3">Rules, not judgement</h2>
+        <p class="split__p">{home.integrity.note}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .split { display: flex; flex-wrap: wrap; gap: clamp(2rem, 5vw, 4.5rem); align-items: flex-start; }
+  .split__text { flex: 1 1 22rem; min-width: 0; max-width: 34rem; }
+  .split__visual { flex: 1 1 26rem; min-width: 0; }
+  .split__p { margin-top: 1rem; color: var(--ink-soft); }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem; }
+  .h3 { font-size: 1.3125rem; }
+</style>

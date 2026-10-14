@@ -1,0 +1,31 @@
+---
+import { frontmatter as home } from '../../content/home.md';
+const { data } = home;
+type Point = { icon: 'workspace' | 'roles' | 'lock'; title: string; text: string };
+---
+<section class="section" aria-labelledby="data-h">
+  <div class="container">
+    <h2 id="data-h">{data.heading}</h2>
+    <ul class="points">
+      {data.points.map((p: Point) => (
+        <li>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            {p.icon === 'workspace' && <><path d="M3 10.5 12 4l9 6.5V20H3z" /><path d="M9.5 20v-6h5v6" /></>}
+            {p.icon === 'roles' && <><circle cx="8" cy="8" r="3" /><circle cx="17" cy="9.5" r="2.5" /><path d="M2.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" /><path d="M14 14.6c.9-.4 1.9-.6 3-.6 2.3 0 4 1.5 4.5 4.5" /></>}
+            {p.icon === 'lock' && <><rect x="4.5" y="10.5" width="15" height="10" rx="1.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></>}
+          </svg>
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </li>
+      ))}
+    </ul>
+    <a href="/security-and-data" class="text-link">Read about security and data</a>
+  </div>
+</section>
+
+<style>
+  .points { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 2rem; }
+  h3 { margin-top: 0.625rem; font-size: 1.1875rem; }
+  p { margin-top: 0.5rem; font-size: 1rem; color: var(--ink-soft); }
+  .text-link { margin-top: 1.5rem; }
+</style>

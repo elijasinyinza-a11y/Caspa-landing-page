@@ -1,0 +1,14 @@
+---
+import { frontmatter as home } from '../../content/home.md';
+import ComponentCards from '../screens/ComponentCards.astro';
+import ActivityRecord from '../screens/ActivityRecord.astro';
+const { chain } = home;
+---
+<section class="section" aria-labelledby="chain-h">
+  <div class="container">
+    <h2 id="chain-h">{chain.heading}</h2>
+    <p class="lead">{chain.lead}</p>
+    <ComponentCards copy={chain.components} />
+    <ActivityRecord caption={chain.activityCaption} />
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+import { site, mainNav } from '../data/site';
+import Logo from './Logo.astro';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<header class="header">
+  <div class="container header__bar">
+    <a href="/" class="brand">
+      <Logo height={40} alt="CASPA™ home" />
+      <span class="brand__badge">{site.status}</span>
+    </a>
+    <button class="menu-btn btn btn--secondary" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <a href={site.primaryAction.href} class="btn btn--primary header__cta">{site.primaryAction.label}</a>
+  </div>
+  <nav id="main-nav" class="nav" aria-label="Main">
+    <ul class="container nav__list">
+      {mainNav.map((item) => (
+        <li>
+          <a href={item.href} class="nav__link" aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
+  const nav = document.getElementById('main-nav');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('nav--open', !open);
+  });
+</script>
+
+<style>
+  .header { background: var(--cream); border-bottom: 1px solid var(--border); }
+  .header__bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;
+    padding-block: 0.75rem;
+  }
+  .brand { display: flex; align-items: center; gap: 0.625rem; min-height: var(--tap); text-decoration: none; margin-right: auto; }
+  .brand :global(img) { width: auto; height: 40px; }
+  .brand__badge {
+    font-size: 0.75rem; font-weight: 600; line-height: 1;
+    border: 1.5px solid var(--navy); border-radius: 999px; padding: 4px 9px;
+  }
+
+  .nav { border-top: 1px solid var(--border); }
+  .nav__list { list-style: none; margin-block: 0; display: flex; flex-wrap: wrap; gap: 2px; }
+  .nav__link {
+    display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 0.75rem;
+    text-decoration: none; font-size: var(--text-small); font-weight: 500;
+  }
+  .nav__list li:first-child .nav__link { padding-left: 0; }
+  .nav__link:hover, .nav__link[aria-current='page'] { text-decoration: underline; text-decoration-thickness: 2px; }
+
+  .menu-btn { display: none; }
+
+  /* Phones: collapse the nav behind a Menu button (only when JS is running). */
+  @media (max-width: 720px) {
+    .brand :global(img) { height: 34px; }
+    .header__cta { order: 3; flex-basis: 100%; }
+    :global(.js) .menu-btn { display: inline-flex; }
+    :global(.js) .nav { display: none; }
+    :global(.js) .nav.nav--open { display: block; }
+    .nav__list { flex-direction: column; padding-block: 0.25rem; }
+    .nav__list li:first-child .nav__link { padding-left: 0; }
+    .nav__link { padding-left: 0; width: 100%; }
+  }
+</style>

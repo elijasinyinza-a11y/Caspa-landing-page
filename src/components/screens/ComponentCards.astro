@@ -1,0 +1,25 @@
+---
+import { components, type ComponentKey } from '../../data/site';
+interface Props { copy: Record<ComponentKey, { text: string; usedBy: string }> }
+const { copy } = Astro.props;
+const keys = Object.keys(components) as ComponentKey[];
+---
+<ol class="cards">
+  {keys.map((key) => (
+    <li class="card">
+      <div class="card__bar" style={`background:${components[key].color}`}></div>
+      <div class="card__body">
+        <h3>{components[key].name}</h3>
+        <p class="cards__text">{copy[key].text}</p>
+        <p class="cards__used">{copy[key].usedBy}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .cards { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); gap: 1rem; }
+  h3 { font-size: 1.3125rem; }
+  .cards__text { margin-top: 0.5rem; font-size: 1rem; }
+  .cards__used { margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted); }
+</style>

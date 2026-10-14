@@ -1,0 +1,36 @@
+---
+import { frontmatter as home } from '../../content/home.md';
+import { site } from '../../data/site';
+import Placeholder from '../Placeholder.astro';
+import Copy from '../Copy.astro';
+const { method } = home;
+---
+<section class="section section--navy" aria-labelledby="method-h">
+  <div class="container method">
+    <div class="method__cover">
+      <Placeholder text="[Book cover: Business Beyond the Strategic Plan]" tone="dark" as="div" />
+    </div>
+    <div class="method__text">
+      <h2 id="method-h">{method.heading}</h2>
+      <p class="lead">{method.intro}</p>
+      <Copy text={method.framework} tone="dark" />
+      <Copy text={method.author} tone="dark" />
+      <div class="method__links">
+        <a href={site.bookUrl} class="text-link">Read the book</a>
+        <a href="/about" class="text-link">About the author</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .method { display: flex; flex-wrap: wrap; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .method__cover { flex: 0 1 16.25rem; min-width: 0; }
+  .method__cover :global(.placeholder) {
+    margin: 0; aspect-ratio: 2 / 3; max-width: 15rem;
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 1.25rem;
+  }
+  .method__text { flex: 1 1 26.25rem; min-width: 0; max-width: 40rem; }
+  .method__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.375rem; }
+  .method__links a { color: var(--white); }
+</style>

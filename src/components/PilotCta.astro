@@ -1,0 +1,23 @@
+---
+/** Closing call to action. Every page ends with it (handoff: Conversion). */
+import { frontmatter as home } from '../content/home.md';
+import { site } from '../data/site';
+import Copy from './Copy.astro';
+interface Props { heading?: string; text?: string }
+const { heading = home.pilot.heading, text = home.pilot.text } = Astro.props;
+---
+<section class="section section--navy pilot" aria-labelledby="pilot-h">
+  <div class="container pilot__inner">
+    <h2 id="pilot-h">{heading}</h2>
+    <p class="lead pilot__text">{text}</p>
+    <Copy text={home.pilot.involves} tone="dark" />
+    <a href={site.primaryAction.href} class="btn btn--inverse btn--lg pilot__btn">{site.primaryAction.label}</a>
+  </div>
+</section>
+
+<style>
+  .pilot__inner { max-width: 40rem; text-align: center; }
+  .pilot__text { margin-inline: auto; max-width: 32em; }
+  .pilot :global(.placeholder) { margin-inline: auto; max-width: 32em; }
+  .pilot__btn { margin-top: 1.75rem; }
+</style>

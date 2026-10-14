@@ -1,0 +1,21 @@
+---
+/**
+ * CASPA™ logo lockup (mark + wordmark), from brand/caspa-logo-original.png
+ * with the white background removed. The tagline is left off: it is too small
+ * to read at header size, and its wording is not yet confirmed for the site.
+ * Use on light backgrounds only (cream or white): the top bar and the wordmark
+ * are navy and disappear on the navy sections.
+ */
+interface Props { height?: number; alt?: string }
+const { height = 40, alt = 'CASPA™' } = Astro.props;
+const ratio = 1656 / 371; // source lockup aspect ratio
+const width = Math.round(height * ratio);
+---
+<picture>
+  <source type="image/webp" srcset="/brand/caspa-lockup-80.webp 358w, /brand/caspa-lockup-120.webp 537w" sizes={`${width}px`} />
+  <img src="/brand/caspa-lockup-80.png" width={width} height={height} alt={alt} decoding="async" />
+</picture>
+
+<style>
+  img { display: block; height: auto; max-width: 100%; }
+</style>

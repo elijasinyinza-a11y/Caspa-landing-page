@@ -1,0 +1,30 @@
+---
+import { frontmatter as home } from '../../content/home.md';
+import GoalHealth from '../screens/GoalHealth.astro';
+import TeamView from '../screens/TeamView.astro';
+import EmployeeContract from '../screens/EmployeeContract.astro';
+const { roles } = home;
+---
+<section class="section section--white" aria-labelledby="roles-h">
+  <div class="container">
+    <h2 id="roles-h">{roles.heading}</h2>
+    <p class="lead">{roles.lead}</p>
+    <div class="roles">
+      <figure class="roles__exec"><GoalHealth /><figcaption><strong>Executives</strong> {roles.executive}</figcaption></figure>
+      <figure class="roles__sup"><TeamView /><figcaption><strong>Supervisors</strong> {roles.supervisor}</figcaption></figure>
+      <figure class="roles__emp"><EmployeeContract /><figcaption><strong>Staff</strong> {roles.employee}</figcaption></figure>
+    </div>
+    <a href="/for-your-role" class="text-link">See what CASPA™ does for your role</a>
+  </div>
+</section>
+
+<style>
+  .roles { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.5rem; align-items: flex-start; }
+  figure { margin: 0; min-width: 0; }
+  figcaption { margin-top: 0.625rem; font-size: 0.875rem; }
+  .roles__exec { flex: 1 1 23.75rem; }
+  .roles__sup { flex: 1 1 20rem; }
+  .roles__emp { flex: 0 1 18rem; margin-inline: auto; }
+  .roles__emp figcaption { text-align: center; }
+  .text-link { margin-top: 1.5rem; }
+</style>

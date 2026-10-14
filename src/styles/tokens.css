@@ -1,0 +1,52 @@
+/*
+ * CASPA™ design tokens, from the design handoff (Visual direction).
+ * Component colours mark identity only: labels, card top bars, chain steps.
+ * Never use them for status, buttons or decoration.
+ * Plan terracotta and Performance rose are still OPEN in the handoff.
+ */
+:root {
+  /* Base */
+  --navy: #0d1b2a;
+  --cream: #f5f4f0;
+  --white: #ffffff;
+  --border: #d5d2ca;
+  --muted: #5e6b7a;       /* 4.5:1 on cream and white */
+  --ink-soft: #33414f;    /* secondary body text */
+  --rule: #b7b2a6;        /* chain connectors */
+  --track: #e4e1d9;       /* progress-bar tracks */
+
+  /* Component identity */
+  --strategy: #378add;
+  --cascade: #7c5cbf;
+  --plan: #b85c38;
+  --performance: #c2417a;
+
+  /* Integrity examples only */
+  --block: #b42318;
+  --block-bg: #fef3f2;
+  --advisory-border: #f5c26b;
+  --advisory-text: #7a2e0e;
+  --advisory-bg: #fffaeb;
+
+  /* On navy */
+  --on-navy: #e3e8ee;
+  --on-navy-muted: #c9d3de;
+  --on-navy-rule: #8ea0b4;
+
+  /* Type */
+  --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-body: 1.0625rem;                      /* 17px */
+  --text-small: 0.9375rem;                     /* 15px */
+  --text-caption: 0.8125rem;                   /* 13px */
+  --text-h1: clamp(2.375rem, 4.6vw, 3.5rem);   /* 38–56px */
+  --text-h2: clamp(1.75rem, 3.2vw, 2.5rem);    /* 28–40px */
+
+  /* Layout */
+  --container: 75rem;                          /* 1200px */
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --section-y: clamp(3.5rem, 7vw, 6.5rem);
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 12px;
+  --tap: 44px;                                 /* minimum touch target */
+}

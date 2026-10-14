@@ -1,0 +1,77 @@
+---
+import { activity, org, formatAmount } from '../../data/sample-utility';
+import { components } from '../../data/site';
+interface Props { caption?: string }
+const { caption } = Astro.props;
+const total = activity.budgetLines.reduce((sum, line) => sum + line.amount, 0);
+---
+<figure class="rec">
+  <div class="rec__window">
+    <div class="rec__chrome"><span>{org.name}</span><span>Activity record</span></div>
+    <div class="rec__content">
+      <div class="rec__head">
+        <div>
+          <div class="rec__code">{activity.code}</div>
+          <div class="rec__title">{activity.title}</div>
+        </div>
+        <div class="rec__meta">Owner: {activity.owner}<br />Progress: {activity.progress}</div>
+      </div>
+      <div class="rec__grid">
+        <div class="rec__part">
+          <div class="rec__bar" style={`background:${components.strategy.color}`}></div>
+          <div class="rec__body">
+            <div class="rec__name">Strategy</div>
+            <div>Serves goal {activity.strategy.goal}, {activity.strategy.goalName}</div>
+            <div class="rec__muted">Through objective {activity.strategy.objective}</div>
+          </div>
+        </div>
+        <div class="rec__part">
+          <div class="rec__bar" style={`background:${components.cascade.color}`}></div>
+          <div class="rec__body">
+            <div class="rec__name">Cascade</div>
+            <div>KPI {activity.cascade.kpi}</div>
+            <div class="rec__muted">Baseline {activity.cascade.baseline}, target {activity.cascade.target}</div>
+          </div>
+        </div>
+        <div class="rec__part">
+          <div class="rec__bar" style={`background:${components.plan.color}`}></div>
+          <div class="rec__body">
+            <div class="rec__name">Plan</div>
+            {activity.budgetLines.map((line) => (
+              <div class="rec__row"><span>{line.code} {line.name}</span><span>{formatAmount(line.amount)}</span></div>
+            ))}
+            <div class="rec__row rec__total"><span>Total, {org.currency}</span><span>{formatAmount(total)}</span></div>
+          </div>
+        </div>
+        <div class="rec__part">
+          <div class="rec__bar" style={`background:${components.performance.color}`}></div>
+          <div class="rec__body">
+            <div class="rec__name">Performance</div>
+            {activity.contracts.map((c) => <div>{c.role}: {c.text}</div>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {caption && <figcaption class="caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .rec { margin: 3rem 0 0; }
+  .rec__window { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .rec__chrome { background: var(--navy); color: var(--white); padding: 0.625rem 1.25rem; font-size: var(--text-caption); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+  .rec__content { padding: clamp(1.125rem, 2.4vw, 1.75rem); }
+  .rec__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 0.75rem 1.5rem; }
+  .rec__code { font-size: 0.875rem; color: var(--muted); }
+  .rec__title { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; line-height: 1.25; }
+  .rec__meta { font-size: var(--text-small); color: var(--ink-soft); }
+  .rec__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr)); gap: 0.75rem; margin-top: 1.375rem; }
+  .rec__part { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .rec__bar { height: 4px; }
+  .rec__body { padding: 0.875rem; font-size: var(--text-small); display: grid; gap: 0.25rem; }
+  .rec__name { font-weight: 700; margin-bottom: 0.125rem; }
+  .rec__muted { color: var(--muted); }
+  .rec__row { display: flex; justify-content: space-between; gap: 0.5rem; }
+  .rec__row span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .rec__total { margin-top: 0.25rem; padding-top: 0.375rem; border-top: 1px solid var(--border); font-weight: 600; }
+</style>

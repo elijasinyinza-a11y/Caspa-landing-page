@@ -1,0 +1,29 @@
+---
+import { site, footerNav } from '../data/site';
+import Logo from './Logo.astro';
+---
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="/" class="footer__logo"><Logo height={30} alt="CASPA™ home" /></a>
+      <a href={site.karisMindUrl} class="text-link">Part of the KarisMind™ family</a>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer__links">
+        {footerNav.map((item) => <li><a href={item.href} class="text-link">{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <p class="footer__legal">© {new Date().getFullYear()} {site.legalEntity}</p>
+  </div>
+</footer>
+
+<style>
+  .footer { border-top: 1px solid var(--border); padding-block: 1.75rem 2.25rem; font-size: var(--text-small); }
+  .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem 2rem; }
+  .footer__brand { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; }
+  .footer__logo { display: inline-flex; align-items: center; min-height: var(--tap); }
+  .footer__logo :global(img) { width: auto; height: 30px; }
+  .footer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+  .footer .text-link { font-weight: 500; }
+  .footer__legal { flex-basis: 100%; font-size: 0.875rem; color: var(--muted); }
+</style>

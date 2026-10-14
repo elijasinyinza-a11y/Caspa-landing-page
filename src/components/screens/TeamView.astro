@@ -1,0 +1,29 @@
+---
+import { team } from '../../data/sample-utility';
+const done = team.members.filter((m) => m.review === 'Done').length;
+---
+<div class="screen">
+  <div class="screen__title">{team.name}</div>
+  <div class="screen__sub">{team.supervisor} view. Mid-year reviews: {done} of {team.members.length} complete</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Role</th><th scope="col">Objectives</th><th scope="col">Mid-year review</th></tr>
+      </thead>
+      <tbody>
+        {team.members.map((m) => (
+          <tr><td>{m.role}</td><td>{m.objectives}</td><td class:list={{ due: m.review !== 'Done' }}>{m.review}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .table-wrap { margin-top: 0.875rem; overflow-x: auto; }
+  table { width: 100%; min-width: 16rem; border-collapse: collapse; font-size: 0.875rem; }
+  th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 8px 9px 0; border-bottom: 1px solid var(--track); }
+  tr:last-child td { border-bottom: 0; }
+  .due { font-weight: 600; }
+</style>

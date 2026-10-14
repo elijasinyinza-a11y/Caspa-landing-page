@@ -1,0 +1,25 @@
+---
+import { frontmatter as home } from '../../content/home.md';
+const { problem } = home;
+---
+<section class="section section--white" aria-labelledby="problem-h">
+  <div class="container">
+    <h2 id="problem-h" class="problem__h">{problem.heading}</h2>
+    <ul class="problem__list">
+      {problem.items.map((item: { title: string; text: string }) => (
+        <li>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .problem__h { max-width: 20em; }
+  .problem__list { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); gap: 2rem; }
+  li { border-top: 2px solid var(--navy); padding-top: 1rem; }
+  h3 { font-size: 1.1875rem; line-height: 1.3; }
+  p { margin-top: 0.5rem; color: var(--muted); font-size: 1rem; }
+</style>

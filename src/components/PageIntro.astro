@@ -1,0 +1,16 @@
+---
+/** Title block for inner pages. */
+interface Props { title: string; lead?: string }
+const { title, lead } = Astro.props;
+---
+<section class="intro">
+  <div class="container">
+    <h1>{title}</h1>
+    {lead && <p class="lead intro__lead">{lead}</p>}
+  </div>
+</section>
+
+<style>
+  .intro { padding-block: clamp(2.75rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem); }
+  .intro__lead { font-size: clamp(1.125rem, 1.6vw, 1.25rem); }
+</style>
