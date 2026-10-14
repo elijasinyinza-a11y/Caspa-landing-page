@@ -1,7 +1,7 @@
 ---
 import { site, mainNav } from '../data/site';
 import Logo from './Logo.astro';
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const path = Astro.url.pathname.replace(/(index)?\.html$/, '').replace(/(.)\/$/, '$1') || '/';
 ---
 <header class="header">
   <div class="container header__bar">

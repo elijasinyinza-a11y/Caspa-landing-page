@@ -14,8 +14,7 @@ export const site = {
   // OPEN: where to buy or read the book.
   bookUrl: '#', // [Where to buy or read Business Beyond the Strategic Plan]
 
-  // OPEN in the handoff: legal entity name for the footer.
-  legalEntity: '[Legal entity, to be confirmed]',
+  legalEntity: 'Karislab Technologies Limited',
 } as const;
 
 export const mainNav = [

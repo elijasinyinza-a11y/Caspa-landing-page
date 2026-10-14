@@ -1,11 +1,10 @@
 ---
 import { frontmatter as home } from '../../content/home.md';
 import { site } from '../../data/site';
-import LineOfSight from '../screens/LineOfSight.astro';
 const { hero } = home;
 ---
 <section class="hero" aria-labelledby="hero-h">
-  <div class="container hero__inner">
+  <div class="container">
     <div class="hero__text">
       <h1 id="hero-h">{hero.headline}</h1>
       <p class="hero__sub">{hero.subhead}</p>
@@ -15,18 +14,13 @@ const { hero } = home;
       </div>
       <p class="hero__note">{hero.pilotNote}</p>
     </div>
-    <div class="hero__visual">
-      <LineOfSight caption={hero.chainCaption} />
-    </div>
   </div>
 </section>
 
 <style>
-  .hero { padding-block: clamp(2.75rem, 7vw, 6rem); }
-  .hero__inner { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(2.5rem, 5vw, 4.5rem); }
-  .hero__text { flex: 1 1 27.5rem; min-width: 0; max-width: 37.5rem; }
-  .hero__visual { flex: 1 1 23.75rem; min-width: 0; max-width: 30rem; }
-  .hero__sub { margin-top: 1.375rem; font-size: clamp(1.125rem, 1.6vw, 1.25rem); line-height: 1.5; color: var(--ink-soft); max-width: 34em; }
-  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .hero { padding-block: clamp(3.5rem, 9vw, 8rem); }
+  .hero__text { max-width: 48rem; }
+  .hero__sub { margin-top: 1.5rem; font-size: clamp(1.125rem, 1.7vw, 1.3125rem); line-height: 1.5; color: var(--ink-soft); max-width: 36em; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
   .hero__note { margin-top: 1.25rem; font-size: var(--text-small); color: var(--muted); }
 </style>
