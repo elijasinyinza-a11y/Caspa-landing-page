@@ -2,18 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Placeholder from '../components/Placeholder.astro';
-import GoalHealth from '../components/screens/GoalHealth.astro';
-import TeamView from '../components/screens/TeamView.astro';
-import EmployeeContract from '../components/screens/EmployeeContract.astro';
-import ActivityRecord from '../components/screens/ActivityRecord.astro';
 
 // Audience concerns, from the handoff's audience table.
 const roles = [
-  { id: 'executives', title: 'Chief executives and managing directors', need: 'See that strategy is actually being executed, and where it is breaking.', screen: 'goal' },
-  { id: 'strategy-office', title: 'Strategy and planning offices', need: 'One system that holds the plan, the cascade and progress, in place of scattered spreadsheets.', screen: 'activity' },
-  { id: 'finance', title: 'Finance directors', need: 'Every budget line tied to an activity and a goal before approval.', screen: 'activity' },
-  { id: 'hr', title: 'HR and people directors', need: 'Performance contracts that inherit from strategy, with ratings kept confidential.', screen: 'team' },
-  { id: 'facilitators', title: 'Consultants and facilitators', need: "Run CASPA™ engagements inside a client's own workspace.", screen: 'none' },
+  { id: 'executives', title: 'Chief executives and managing directors', need: 'See that strategy is actually being executed, and where it is breaking.' },
+  { id: 'strategy-office', title: 'Strategy and planning offices', need: 'One system that holds the plan, the cascade and progress, in place of scattered spreadsheets.' },
+  { id: 'finance', title: 'Finance directors', need: 'Every budget line tied to an activity and a goal before approval.' },
+  { id: 'hr', title: 'HR and people directors', need: 'Performance contracts that inherit from strategy, with ratings kept confidential.' },
+  { id: 'facilitators', title: 'Consultants and facilitators', need: "Run CASPA™ engagements inside a client's own workspace." },
 ];
 ---
 <BaseLayout title="For your role" description="What CASPA™ does for executives, strategy offices, finance, HR and facilitators.">
@@ -27,20 +23,11 @@ const roles = [
           <Placeholder text={`[Detail for ${r.title.toLowerCase()}. Copy for Elijah's review]`} />
           {r.id === 'facilitators' && <Placeholder text="[OPEN: whether to invite consultants to apply as CASPA™ facilitators now or later]" />}
         </div>
-        <div class="role__visual">
-          {r.screen === 'goal' && <GoalHealth />}
-          {r.screen === 'team' && <><TeamView /><div class="role__phone"><EmployeeContract /></div></>}
-          {r.screen === 'activity' && <ActivityRecord />}
-        </div>
       </div>
     </section>
   ))}
 </BaseLayout>
 
 <style>
-  .role { display: flex; flex-wrap: wrap; gap: clamp(2rem, 5vw, 4.5rem); align-items: flex-start; }
-  .role__text { flex: 1 1 22rem; min-width: 0; max-width: 34rem; }
-  .role__visual { flex: 1 1 26rem; min-width: 0; }
-  .role__visual :global(.rec) { margin-top: 0; }
-  .role__phone { margin-top: 1.5rem; }
+  .role__text { max-width: 40rem; }
 </style>

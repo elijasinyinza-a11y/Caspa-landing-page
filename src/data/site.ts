@@ -11,8 +11,7 @@ export const site = {
   status: 'Pilot',
   primaryAction: { label: 'Request pilot access', href: '/request-pilot-access' },
 
-  // OPEN in the handoff: links to the KarisMind™ site and the book.
-  karisMindUrl: '#', // [KarisMind™ site URL, to be confirmed]
+  // OPEN: where to buy or read the book.
   bookUrl: '#', // [Where to buy or read Business Beyond the Strategic Plan]
 
   // OPEN in the handoff: legal entity name for the footer.

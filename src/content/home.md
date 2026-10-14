@@ -9,7 +9,7 @@ hero:
   headline: "Strategy that reaches every desk."
   subhead: "CASPA™ connects every budget line, KPI and staff objective to the strategic goal it serves, and flags where the chain breaks while there is still time to fix it."
   pilotNote: "CASPA™ is currently in pilot."
-  chainCaption: "One person's objective, traced up to the goal it serves. Fictional sample data."
+  chainCaption: ""
 
 problem:
   heading: "Where strategy gets lost between the plan and the desk"
@@ -39,7 +39,6 @@ chain:
     performance:
       text: "Turns activities into individual contract objectives, reviews and appraisals."
       usedBy: "Used by HR, supervisors and staff"
-  activityCaption: "The activity page shows all four components on one record. Illustrative screen, fictional data."
 
 integrity:
   heading: "Breaks in the chain are caught, not discovered at year end"
@@ -47,7 +46,7 @@ integrity:
     - "The integrity checker looks for goals with no funded activity, KPIs with no owner and budget lines with no activity behind them."
     - "Hard blocks stop an action that would break the chain, such as submitting a budget with an orphaned line. Advisory flags don't stop work; they tell the owner what to fix while there is still time."
   note: "Checks are fixed rules, applied the same way every time."
-  caption: "The findings drawer. Structural examples only, fictional data."
+  caption: "Example findings."
 
 doors:
   heading: "Start where you are"

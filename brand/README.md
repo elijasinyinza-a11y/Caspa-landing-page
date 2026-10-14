@@ -7,6 +7,7 @@
 | `caspa-lockup-transparent.png` | Mark and wordmark, no tagline, transparent | Source for the web sizes in `public/brand/` |
 | `caspa-mark-transparent.png` | The three-bar mark alone, transparent | Small spaces, app icons |
 | `caspa-mark.svg` | Vector redraw of the mark | Favicon and anywhere a sharp mark is needed |
+| `book-cover-original.png` | Cover of *Business Beyond the Strategic Plan* | Source for `public/images/` (homepage and About page) |
 
 Website copies live in `public/brand/` (header and footer lockup, WebP with PNG
 fallback), plus `public/favicon.svg`, `public/apple-touch-icon.png` and

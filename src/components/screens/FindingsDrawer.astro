@@ -1,18 +1,23 @@
 ---
 /**
- * Integrity findings, as structural examples only.
+ * Example integrity findings: structural examples only, no organisation data.
  * Hard blocks and advisory flags differ by label, icon shape and border style,
- * not by colour alone (WCAG: no colour-only meaning).
+ * not by colour alone.
  */
-import { findings, org } from '../../data/sample-utility';
 interface Props { caption?: string }
 const { caption } = Astro.props;
+
+const findings: { severity: 'block' | 'advisory'; title: string; detail: string }[] = [
+  { severity: 'block', title: 'A budget line has no activity', detail: "The budget can't be submitted until the line is attached to an activity or removed." },
+  { severity: 'advisory', title: 'A KPI has no owner', detail: 'Assign an owner before targets are cascaded to teams.' },
+  { severity: 'advisory', title: 'A goal has no funded activity', detail: 'Fund an existing activity or add one in this budget round.' },
+];
 ---
 <figure class="drawer">
   <div class="drawer__panel">
     <div class="drawer__head">
       <span class="drawer__title">Integrity findings</span>
-      <span class="drawer__count">{org.year} budget round, {findings.length} findings</span>
+      <span class="drawer__count">{findings.length} findings</span>
     </div>
     <ul class="drawer__list">
       {findings.map((f) => (
@@ -36,7 +41,7 @@ const { caption } = Astro.props;
 
 <style>
   .drawer { margin: 0; }
-  .drawer__panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 12px 32px rgb(13 27 42 / 0.08); overflow: hidden; }
+  .drawer__panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
   .drawer__head { padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
   .drawer__title { font-weight: 700; }
   .drawer__count { font-size: 0.875rem; color: var(--muted); }

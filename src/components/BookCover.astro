@@ -1,0 +1,21 @@
+---
+interface Props { width?: number }
+const { width = 240 } = Astro.props;
+const height = Math.round(width * 1.5);
+---
+<picture>
+  <source type="image/webp" srcset="/images/business-beyond-the-strategic-plan-240.webp 240w, /images/business-beyond-the-strategic-plan-480.webp 480w" sizes={`${width}px`} />
+  <img
+    src="/images/business-beyond-the-strategic-plan-480.jpg"
+    width={width}
+    height={height}
+    alt="Cover of Business Beyond the Strategic Plan by Elijah Sinyinza"
+    loading="lazy"
+    decoding="async"
+    class="cover"
+  />
+</picture>
+
+<style>
+  .cover { width: 100%; max-width: var(--cover-w, 240px); height: auto; border-radius: 4px; box-shadow: 0 16px 40px rgb(0 0 0 / 0.35); }
+</style>

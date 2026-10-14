@@ -31,14 +31,13 @@ npm run preview    # serves the built site
 src/
   content/home.md          Homepage copy (edit this to change wording)
   data/site.ts             Site name, navigation, footer, links
-  data/sample-utility.ts   Fictional "Sample Water Utility" data for every mock screen
   data/pilot-form.ts       Form options: sectors, countries, staff ranges
   styles/tokens.css        Colours, type sizes and spacing from the handoff
   styles/global.css        Base styles, buttons, cards
   layouts/BaseLayout.astro Page shell: head, header, footer, closing pilot CTA
   components/              Header, footer, placeholders, pilot CTA
   components/home/         One file per homepage section
-  components/screens/      Mock product screens built from the sample data
+  components/screens/      The goal-to-desk chain diagram, component cards, example findings
   pages/                   One file per page (the URL follows the file name)
 scripts/check-content.mjs  Content-rules check, runs after every build
 brand/                     Logo masters and usage notes (see brand/README.md)
@@ -56,11 +55,11 @@ All copy is draft until approved. Framework wording (7Cs, 4Q, SLI, 6Ps,
 friction signals) must come from *Business Beyond the Strategic Plan* or
 Elijah's confirmed input.
 
-### Sample data
+### Screenshots
 
-Every mock screen reads from `src/data/sample-utility.ts`, so the figures
-agree with each other everywhere. Never use a pilot organisation's real
-name, goals or figures.
+The site shows no sample organisation. Where a product screen belongs, the
+page shows a labelled placeholder until a clean export is ready. Screenshots
+must use fictional data, and never a pilot organisation's name, goals or figures.
 
 ## Content-rules check
 
@@ -68,7 +67,7 @@ name, goals or figures.
 pages. The build fails if it finds:
 
 - retired or discontinued names (Karis Strategy, Karis Cascade, Cascade Engine,
-  Karis Plan, Karis Performance, KarisLearning, Karis D'Cesion)
+  Karis Plan, Karis Performance, KarisLearning, Karis D'Cesion, KarisMind)
 - general-availability wording (sign up, start free, free trial, no credit card, per-seat pricing)
 - unverifiable claims (trusted by, deployed globally, certified practitioners)
 - "AI-powered"
@@ -100,7 +99,7 @@ checklist still needs a human review before each page is approved.
 
    | Variable | What it is |
    | --- | --- |
-   | `PUBLIC_SITE_URL` | The live address, e.g. `https://caspa.karismind.com`. Used for the sitemap and canonical links. |
+   | `PUBLIC_SITE_URL` | The live address, e.g. `https://caspa.example.com`. Used for the sitemap and canonical links. |
    | `PUBLIC_PILOT_FORM_ENDPOINT` | Where the pilot form posts. Leave empty until chosen; the form then says it isn't connected and can't be submitted. |
 
 4. **Add the domain** in *Project → Settings → Domains* once you've decided where

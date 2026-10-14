@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Placeholder from '../components/Placeholder.astro';
+import BookCover from '../components/BookCover.astro';
 import { site } from '../data/site';
 import { frontmatter as home } from '../content/home.md';
 ---
@@ -14,14 +15,10 @@ import { frontmatter as home } from '../content/home.md';
         <Placeholder text="[Author biography: from Elijah. OPEN: short credibility section or fuller About page]" />
       </div>
       <div>
+        <div class="cover"><BookCover width={200} /></div>
         <h2 class="h3">Business Beyond the Strategic Plan</h2>
         <Placeholder text={home.method.framework} />
         <a href={site.bookUrl} class="text-link">Read the book</a>
-      </div>
-      <div>
-        <h2 class="h3">The KarisMind™ family</h2>
-        <Placeholder text="[How CASPA™ relates to the KarisMind™ Instruments, GOLD™ and OCAM™: wording to be confirmed]" />
-        <a href={site.karisMindUrl} class="text-link">Visit KarisMind™</a>
       </div>
     </div>
   </section>
@@ -31,4 +28,5 @@ import { frontmatter as home } from '../content/home.md';
   .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2.5rem; }
   .h3 { font-size: 1.3125rem; }
   .text-link { margin-top: 0.5rem; }
+  .cover { --cover-w: 200px; margin-bottom: 1.25rem; }
 </style>

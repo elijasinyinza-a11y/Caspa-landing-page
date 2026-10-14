@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Placeholder from '../components/Placeholder.astro';
 import LineOfSight from '../components/screens/LineOfSight.astro';
-import ActivityRecord from '../components/screens/ActivityRecord.astro';
 import FindingsDrawer from '../components/screens/FindingsDrawer.astro';
 import TwoDoors from '../components/home/TwoDoors.astro';
 ---
@@ -15,14 +14,14 @@ import TwoDoors from '../components/home/TwoDoors.astro';
         <h2>From goal to desk</h2>
         <Placeholder text="[The four components as one journey: Strategy, Cascade, Plan, Performance. Copy for Elijah's review]" />
       </div>
-      <div class="split__visual"><LineOfSight caption="Fictional sample data." /></div>
+      <div class="split__visual"><LineOfSight /></div>
     </div>
   </section>
   <section class="section">
     <div class="container">
       <h2>The activity page</h2>
       <p class="lead">Every activity carries its goal, KPI, budget lines and contract objectives on one record.</p>
-      <ActivityRecord caption="Illustrative screen, fictional data." />
+      <Placeholder as="div" text="[Screenshot: the activity page, clean export from the product]" />
     </div>
   </section>
   <section class="section section--white">
@@ -32,7 +31,7 @@ import TwoDoors from '../components/home/TwoDoors.astro';
         <p class="lead">Breaks in the chain are flagged while there is still time to fix them.</p>
         <a href="/integrity-checker" class="text-link">More about the integrity checker</a>
       </div>
-      <div class="split__visual"><FindingsDrawer caption="Structural examples only, fictional data." /></div>
+      <div class="split__visual"><FindingsDrawer caption="Example findings." /></div>
     </div>
   </section>
   <TwoDoors />

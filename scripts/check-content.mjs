@@ -2,7 +2,7 @@
 /**
  * Content-rules check, run after every build (and in CI).
  * Enforces the handoff's non-negotiable rules that a machine can check:
- *   - no retired or discontinued product names
+ *   - no retired or discontinued product names (including KarisMind)
  *   - no general-availability signals (sign-up, free trial, pricing language)
  *   - no unverifiable social-proof claims
  *   - AI is not the lead message
@@ -24,6 +24,7 @@ const BANNED = [
   [/\bKaris\s+Performance\b/i, 'retired name "Karis Performance"'],
   [/\bKaris\s*Learning\b/i, 'discontinued "KarisLearning"'],
   [/D['’]?\s*Cesion/i, "discontinued \"Karis D'Cesion\""],
+  [/\bKaris\s*Mind\b/i, 'KarisMind (no longer in use)'],
   // General-availability signals
   [/\bsign[\s-]?up\b/i, '"Sign up" (CASPA™ is in pilot)'],
   [/\bstart\s+(for\s+)?free\b/i, '"Start free"'],
